@@ -1,5 +1,6 @@
 using Funq;
 using ServiceStack;
+using ServiceStack.Text;
 using twitterauthtest2.ServiceInterface;
 
 [assembly: HostingStartup(typeof(twitterauthtest2.AppHost))]
@@ -19,7 +20,8 @@ public class AppHost : AppHostBase, IHostingStartup
     {
         // Configure ServiceStack only IOC, Config & Plugins
         SetConfig(new HostConfig {
-            UseSameSiteCookies = true,
+            // Needs to be null to set SameSite: Lax
+            UseSameSiteCookies = null,
         });
     }
 }
